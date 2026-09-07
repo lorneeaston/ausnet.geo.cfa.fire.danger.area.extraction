@@ -17,6 +17,8 @@ the gazettal, not these maps:
 
 ## Prerequisites
 
+Install `WSL (Ubuntu)`, then:
+
 ```bash
 sudo apt-get update && sudo apt-get install -y libgdal-dev gdal-bin
 uv pip install --python .venv/bin/python -r requirements.txt
