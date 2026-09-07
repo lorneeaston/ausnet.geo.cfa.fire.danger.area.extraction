@@ -65,13 +65,15 @@ they come from `~/.cache/fdp/lga.gpkg`.
 | File | |
 |---|---|
 | `output/fdp_areas.gpkg` | 81 polygons, EPSG:3111, layer `fdp_areas` |
-| `output/fdp_areas.geojson` | the same, EPSG:4326 |
+| `output/fdp_areas.geojson` | the same single layer, `fdp_areas`, in EPSG:4326 |
 | `output/validation.md` | all checks with their numbers |
 | `output/map.html` | interactive map, toggleable Vicmap LGA overlay |
 | `output/splits.png` | the two three-way splits against their parent outline |
 
-Schema: `area_name`, `lga_name` (null for the 5 unincorporated areas),
-`is_split`, `source_pdf`, `source_layer`, `geometry_source`.
+Schema: `area_name`, `lga_name` (the LGA for each feature; null for the 5
+unincorporated areas), `is_split`, `source_pdf`, `source_layer`,
+`geometry_source`. The LGA values are attributes in `lga_name`, not separate
+layers.
 
 ## How the subject area is separated from its neighbours
 
