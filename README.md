@@ -67,13 +67,18 @@ they come from `~/.cache/fdp/lga.gpkg`.
 | `output/fdp_areas.gpkg` | 81 polygons, EPSG:3111, layer `fdp_areas` |
 | `output/fdp_areas.geojson` | the same single layer, `fdp_areas`, in EPSG:4326 |
 | `output/validation.md` | all checks with their numbers |
-| `output/map.html` | interactive map, toggleable Vicmap LGA overlay |
+| `output/map.html` | standalone interactive map, generated from `fdp_areas.gpkg`; the GeoJSON data is embedded in the HTML |
 | `output/splits.png` | the two three-way splits against their parent outline |
 
 Schema: `area_name`, `lga_name` (the LGA for each feature; null for the 5
 unincorporated areas), `is_split`, `source_pdf`, `source_layer`,
 `geometry_source`. The LGA values are attributes in `lga_name`, not separate
 layers.
+
+The web map is regenerated from `output/fdp_areas.gpkg`, not by reading
+`output/fdp_areas.geojson`. The GeoJSON is a separate GIS deliverable; once
+`map.html` has been generated, it contains the simplified map data and can be
+opened without either spatial data file.
 
 ## How the subject area is separated from its neighbours
 
