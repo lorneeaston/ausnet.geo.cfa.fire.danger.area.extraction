@@ -1,0 +1,13 @@
+# Fetching the source GeoPDFs (download_municipalities.py)
+requests
+
+# Geometry assembly: Vicmap LGA boundaries, splitting parents on the PDF-derived
+# dividing lines, validation. geopandas pulls in pandas/pyproj; pyogrio is the
+# GPKG/GeoJSON IO engine and is named explicitly so the install is deterministic.
+geopandas
+shapely
+pyogrio
+
+# Outputs
+folium      # output/map.html
+matplotlib  # static split-area figures
