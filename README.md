@@ -17,11 +17,27 @@ the gazettal, not these maps:
 
 ## Prerequisites
 
-Install `WSL (Ubuntu)`, then:
+1. Install `WSL (Ubuntu)`
+
+2. Install `uv`
+
+```bash
+sudo snap install astral-uv --classic
+```
+
+3. Install `GDAL`
 
 ```bash
 sudo apt-get update && sudo apt-get install -y libgdal-dev gdal-bin
 uv pip install --python .venv/bin/python -r requirements.txt
+```
+
+4. Create a `venv`:
+
+```bash
+uv venv --python 3.12
+source .venv/bin/activate
+uv pip install -r requirements.txt
 ```
 
 ## Pipeline
