@@ -102,6 +102,12 @@ The web map is regenerated from `output/fdp_areas.gpkg`, not by reading
 `map.html` has been generated, it contains the simplified map data and can be
 opened without either spatial data file.
 
+To export the `fdp_areas` layer as a WGS84 Shapefile (`EPSG:4326`):
+
+```bash
+ogr2ogr -f "ESRI Shapefile" -t_srs EPSG:4326 output/shp output/fdp_areas.gpkg fdp_areas
+```
+
 ## How the subject area is separated from its neighbours
 
 Each map draws its subject area *and* its neighbours in one unstructured PDF
