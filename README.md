@@ -60,6 +60,28 @@ python assemble_fdp_areas.py && python validate_fdp_areas.py && python visualise
 `assemble_fdp_areas.py --refresh-vicmap` re-pulls the LGA boundaries; otherwise
 they come from `~/.cache/fdp/lga.gpkg`.
 
+## Data and formats
+
+The source files are georeferenced **GeoPDFs**, one per CFA declaration area.
+The PDFs contain a vector boundary layer named
+`Layers_fdp_boundaries<date>_final` and a separate labels layer. The pipeline
+discovers the boundary layer in each PDF and extracts it with GDAL/`ogr2ogr`;
+the labels layer and PDF page appearance are not used as data.
+
+For each PDF, the extraction retains the vector linework for the subject area
+and neighbouring areas, in GDA94 / Vicgrid94 (`EPSG:3111`). The PDF's
+georeferencing metadata is also read: its `NEATLINE` map frame identifies the
+subject map extent, and its creation date and boundary-layer name are carried
+into the assembled metadata. The source PDFs do not provide reliable feature
+attributes for the boundaries.
+
+The intermediate files in `files/municipalities_geo/` are GeoJSON extracts of
+that raw PDF linework. `assemble_fdp_areas.py` polygonizes the linework and
+uses the `NEATLINE` centroid to select the subject face. For split councils,
+the selected PDF faces provide only the internal dividing cuts; the outer
+boundary comes from the Vicmap LGA polygon. The selected PDF faces are kept in
+`files/pdf_faces.gpkg` for validation, not as a final deliverable.
+
 ## Outputs
 
 | File | |
